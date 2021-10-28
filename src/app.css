@@ -1,6 +1,9 @@
-.home {
+.app {
     height: 100vh;
     width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(to top, #5877f1, #43adff, #22bbfc , #45e9b8);
     background-size: 400% 400%;
     animation: gradient 4s ease infinite;
