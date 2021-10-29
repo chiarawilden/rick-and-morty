@@ -39,22 +39,37 @@ export default function Search() {
 
     return (
         <div className="search">
-            <form>
-                <input type="text" placeholder="Search" value={searchInput} onChange={filterData}></input>
-                {searchInput.length == 0
-                    ? <i className="fas fa-search"/>
-                    : <i className="fas fa-times" id="clear" onClick={clearInput}/>
+            <div className="search-input">
+            
+                <form style={{borderRadius: filteredCharacters.length !== 0 ? "22px 22px 0 0" : "22px"}}>
+                    <input type="text" placeholder="Search" value={searchInput} onChange={filterData}></input>
+                    {searchInput.length == 0
+                        ? <i className="fas fa-search"/>
+                        : <i className="fas fa-times" id="clear" onClick={clearInput}/>
+                    }
+                </form>
+                {filteredCharacters.length !== 0 &&
+                    <div className="search-result">
+                        {filteredCharacters.map(character => {
+                            return (
+                                <div className="search-item" key={character.id}><img src={character.image}/>{character.name}</div>
+                            )
+                        })}
+                    </div>
                 }
-            </form>
-            {filteredCharacters.length !== 0 &&
-                <div className="search-result">
-                    {filteredCharacters.map(character => {
-                        return (
-                            <div className="search-item" key={character.id}><img src={character.image}/>{character.name}</div>
-                        )
-                    })}
-                </div>
-            }
+            
+            </div>
+                {filteredCharacters.length !== 0 &&
+                    <div className="search-results">  
+                        {filteredCharacters.map(character => {
+                            return (
+                                <div className="card" key={character.id}>
+                                    <img src={character.image}/>
+                                </div>
+                            )
+                        })} 
+                    </div>
+                }
         </div>
     )
 }

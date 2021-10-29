@@ -1,8 +1,7 @@
 .topbar {
-    height: 111px;
+    height: 188px;
     width: 100%;
-    position: absolute;
-    top: 0;
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,6 +9,10 @@
     backdrop-filter: blur(33px);
     border-bottom: 2px solid transparent;
     box-shadow: 11px 11px 11px rgba(44, 55, 66, 0.04);
-    color: rgba(255, 255, 255, 0.8);
     font-family: sans-serif;
+    z-index: 2;
+}
+
+.topbar img {
+    height: 66%;
 }

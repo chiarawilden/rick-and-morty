@@ -4,9 +4,10 @@
     box-sizing: border-box;
 }
 
-html, body {
+html, body, #root {
     height: 100%;
     width: 100%;
     font-family: sans-serif;
     color: #FFF;
+    overflow: auto;
 }
