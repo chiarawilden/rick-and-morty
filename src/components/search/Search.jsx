@@ -3,11 +3,14 @@ import "./search.css";
 import axios from "axios";
 import "core-js";
 import regeneratorRuntime from "regenerator-runtime";
+import {useClickOutside} from "react-click-outside-hook";
 
 export default function Search() {
     const [characters, setCharacters] = useState([]);
     const [filteredCharacters, setFilteredCharacters] = useState([]);
     const [searchInput, setSearchInput] = useState("");
+    const [isExpanded, setExpanded] = useState(true);
+    const [ref, clickedOutside] = useClickOutside();
  
     useEffect(() => {
             const getCharacters = async () => {
@@ -32,6 +35,11 @@ export default function Search() {
         }
     };
 
+    useEffect(() => {
+        if(clickedOutside)
+        setExpanded(!isExpanded);
+    }, [clickedOutside]);
+
     const clearInput = () => {
         setFilteredCharacters([]);
         setSearchInput("");
@@ -40,36 +48,54 @@ export default function Search() {
     return (
         <div className="search">
             <div className="search-input">
-            
-                <form style={{borderRadius: filteredCharacters.length !== 0 ? "22px 22px 0 0" : "22px"}}>
-                    <input type="text" placeholder="Search" value={searchInput} onChange={filterData}></input>
+                <form style={{borderRadius: !isExpanded || filteredCharacters.length <= 0 ? "22px" : "22px 22px 0 0"}}>
+                    <input type="text" placeholder="Search" value={searchInput} onChange={filterData} ref={ref}/>
                     {searchInput.length == 0
                         ? <i className="fas fa-search"/>
                         : <i className="fas fa-times" id="clear" onClick={clearInput}/>
                     }
                 </form>
                 {filteredCharacters.length !== 0 &&
-                    <div className="search-result">
-                        {filteredCharacters.map(character => {
-                            return (
-                                <div className="search-item" key={character.id}><img src={character.image}/>{character.name}</div>
-                            )
-                        })}
-                    </div>
+                    <>
+                    {isExpanded 
+                        ? (
+                        <div className="search-result">  
+                                <>
+                                    {filteredCharacters.map(character => {
+                                        return (
+                                            <div className="search-item" key={character.id}>
+                                                <img src={character.image}/>
+                                                {character.name}
+                                            </div>
+                                        )
+                                    })}
+                                </>
+                        </div>
+                        ) 
+                        : null
+                    }
+                    </>
                 }
             
             </div>
-                {filteredCharacters.length !== 0 &&
-                    <div className="search-results">  
-                        {filteredCharacters.map(character => {
-                            return (
-                                <div className="card" key={character.id}>
-                                    <img src={character.image}/>
-                                </div>
-                            )
-                        })} 
-                    </div>
-                }
+            {filteredCharacters.length !== 0 &&
+                <div className="search-results">  
+                    {filteredCharacters.map(character => {
+                        return (
+                            <div className="card" key={character.id}>
+                                <img src={character.image}/>
+                                <h1>{character.name}</h1>
+                                <p>Status: {character.status}</p>
+                                <p>Species: {character.species}</p>
+                                <p>Origin: {character.origin.name}</p>
+                            </div>
+                        )
+                    })} 
+                </div>
+            }
+            <div className="rick-morty-background">
+                <img src="/images/morty-eyes.png" alt="Rick and Morty Together"/>
+            </div>
         </div>
     )
 }

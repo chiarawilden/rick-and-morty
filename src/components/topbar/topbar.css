@@ -10,7 +10,7 @@
     border-bottom: 2px solid transparent;
     box-shadow: 11px 11px 11px rgba(44, 55, 66, 0.04);
     font-family: sans-serif;
-    z-index: 2;
+    z-index: 3;
 }
 
 .topbar img {
