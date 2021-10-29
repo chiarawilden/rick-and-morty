@@ -1,10 +1,11 @@
 import React from "react";
 import "./topbar.css";
+import logo from "../../images/rick-and-morty.png";
 
 export default function Topbar() {
     return (
         <div className="topbar">
-            <span>Search</span>
+            <img src={logo}/>
         </div>
     )
 }
