@@ -15,7 +15,7 @@ export default function Search() {
  
     useEffect(() => {
             const getCharacters = async () => {
-                const res = await axios.get("https://rickandmortyapi.com/api/character/?page=22");
+                const res = await axios.get("https://rickandmortyapi.com/api/character/?page=11");
                 setCharacters(res.data.results);
             }
             getCharacters();
@@ -97,6 +97,10 @@ export default function Search() {
             }
             <div className="rick-morty-background">
                 <img src="/images/morty-eyes.png" alt="Rick and Morty Together"/>
+            </div>
+            <div className="links">
+                <a href="https://rickandmortyapi.com/">API</a>
+                <a href="https://github.com/chiarawilden/rick-and-morty-search">GitHub</a>
             </div>
         </div>
     )
