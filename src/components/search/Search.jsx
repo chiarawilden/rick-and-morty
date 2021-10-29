@@ -7,6 +7,7 @@ import regeneratorRuntime from "regenerator-runtime";
 export default function Search() {
     const [characters, setCharacters] = useState([]);
     const [filteredCharacters, setFilteredCharacters] = useState([]);
+    const [searchInput, setSearchInput] = useState("");
  
     useEffect(() => {
             const getCharacters = async () => {
@@ -19,6 +20,7 @@ export default function Search() {
 
     const filterData = event => {
         const searchTerm = event.target.value;
+        setSearchInput(searchTerm);
         const filteredData = characters.filter(character => {
             return character.name.toLowerCase().includes(searchTerm.toLowerCase());
         });
@@ -30,22 +32,27 @@ export default function Search() {
         }
     };
 
+    const clearInput = () => {
+        setFilteredCharacters([]);
+        setSearchInput("");
+    }
+
     return (
         <div className="search">
             <form>
-                <button type="submit">
-                    <i className="fas fa-search"></i>
-                </button>
-                <input type="text" placeholder="Search" onChange={filterData}></input>
-                <i className="fas fa-times"></i>
+                <input type="text" placeholder="Search" value={searchInput} onChange={filterData}></input>
+                {searchInput.length == 0
+                    ? <i className="fas fa-search"/>
+                    : <i className="fas fa-times" id="clear" onClick={clearInput}/>
+                }
             </form>
             {filteredCharacters.length !== 0 &&
                 <div className="search-result">
-                    {filteredCharacters.slice(0, 9).map(character => {
+                    {filteredCharacters.map(character => {
                         return (
-                            <div className="search-item" key={character.id}>{character.name}</div>
+                            <div className="search-item" key={character.id}><img src={character.image}/>{character.name}</div>
                         )
-                    })};
+                    })}
                 </div>
             }
         </div>
