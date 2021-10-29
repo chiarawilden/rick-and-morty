@@ -96,7 +96,7 @@ export default function Search() {
                 </div>
             }
             <div className="rick-morty-background">
-                <img src="/images/morty-eyes.png" alt="Rick and Morty Together"/>
+                <img src={"./images/morty-eyes.png"} alt="Rick and Morty Together"/>
             </div>
             <div className="links">
                 <a href="https://rickandmortyapi.com/">API</a>
