@@ -166,5 +166,6 @@
     }
 
     .rick-morty-background img {
+        margin-bottom: -5px;
         height: 444px;
     }

@@ -8,15 +8,15 @@ import {useClickOutside} from "react-click-outside-hook";
 export default function Search() {
     const [characters, setCharacters] = useState([]);
     const [filteredCharacters, setFilteredCharacters] = useState([]);
+    const [dimensions, setDimensions] = useState([]);
     const [searchInput, setSearchInput] = useState("");
     const [isExpanded, setExpanded] = useState(true);
     const [ref, clickedOutside] = useClickOutside();
  
     useEffect(() => {
             const getCharacters = async () => {
-                const res = await axios.get("https://rickandmortyapi.com/api/character");
+                const res = await axios.get("https://rickandmortyapi.com/api/character/?page=22");
                 setCharacters(res.data.results);
-                console.log(res.data.results);
             }
             getCharacters();
     }, []);
@@ -30,6 +30,7 @@ export default function Search() {
 
         if (searchTerm === "") {
             setFilteredCharacters([]);
+            setExpanded(!isExpanded);
         } else {
             setFilteredCharacters(filteredData);
         }
@@ -87,6 +88,7 @@ export default function Search() {
                                 <h1>{character.name}</h1>
                                 <p>Status: {character.status}</p>
                                 <p>Species: {character.species}</p>
+                                <p>Gender: {character.gender}</p>
                                 <p>Origin: {character.origin.name}</p>
                             </div>
                         )

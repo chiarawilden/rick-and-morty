@@ -16,3 +16,10 @@
 .topbar img {
     height: 66%;
 }
+
+@media screen and (max-width: 500px) {
+    .topbar img {
+        max-width: 80%;
+        object-fit: contain;
+    }
+}
