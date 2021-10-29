@@ -4,7 +4,7 @@ I knew this API would come in handy!
 
 **Desktop View**  
 
-![Rick and Morty Search Filter (Desktop View)](/readme/rick-and-morty-desktop.png)  
+![Rick and Morty Search Filter (Desktop View)](/readme/rick-and-morty-search.png)  
 
 **Mobile View**  
 
