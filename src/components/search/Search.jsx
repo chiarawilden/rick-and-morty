@@ -37,13 +37,18 @@ export default function Search() {
     };
 
     useEffect(() => {
-        if(clickedOutside)
-        setExpanded(!isExpanded);
+        if(clickedOutside) setExpanded(!isExpanded);
     }, [clickedOutside]);
+
+    const toggleInputResults = () => {
+        if(filteredCharacters.length > 0) {
+            setExpanded(!isExpanded);
+        }
+    }
 
     const submitInput = event => {
         event.preventDefault();
-        setExpanded(!isExpanded)
+        setExpanded(!isExpanded);
     }
 
     const clearInput = () => {
@@ -55,7 +60,7 @@ export default function Search() {
         <div className="search">
             <div className="search-input">
                 <form onSubmit={submitInput} style={{borderRadius: !isExpanded || filteredCharacters.length <= 0 ? "22px" : "22px 22px 0 0"}}>
-                    <input type="text" placeholder="Search" value={searchInput} onChange={filterData} ref={ref}/>
+                    <input type="text" placeholder="Search" value={searchInput} onClick={toggleInputResults} onChange={filterData} ref={ref}/>
                     {searchInput.length == 0
                         ? <i className="fas fa-search"/>
                         : <i className="fas fa-times" id="clear" onClick={clearInput}/>
@@ -65,7 +70,7 @@ export default function Search() {
                     <>
                     {isExpanded 
                         ? (
-                        <div className="search-result">  
+                        <div className="input-result">  
                                 <>
                                     {filteredCharacters.map(character => {
                                         return (
