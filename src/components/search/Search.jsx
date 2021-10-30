@@ -41,6 +41,11 @@ export default function Search() {
         setExpanded(!isExpanded);
     }, [clickedOutside]);
 
+    const submitInput = event => {
+        event.preventDefault();
+        setExpanded(!isExpanded)
+    }
+
     const clearInput = () => {
         setFilteredCharacters([]);
         setSearchInput("");
@@ -49,7 +54,7 @@ export default function Search() {
     return (
         <div className="search">
             <div className="search-input">
-                <form style={{borderRadius: !isExpanded || filteredCharacters.length <= 0 ? "22px" : "22px 22px 0 0"}}>
+                <form onSubmit={submitInput} style={{borderRadius: !isExpanded || filteredCharacters.length <= 0 ? "22px" : "22px 22px 0 0"}}>
                     <input type="text" placeholder="Search" value={searchInput} onChange={filterData} ref={ref}/>
                     {searchInput.length == 0
                         ? <i className="fas fa-search"/>
