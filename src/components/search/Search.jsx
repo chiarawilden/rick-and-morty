@@ -82,7 +82,6 @@ export default function Search() {
                     }
                     </>
                 }
-            
             </div>
             {filteredCharacters.length !== 0 &&
                 <div className="search-results">  

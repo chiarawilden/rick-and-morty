@@ -175,6 +175,7 @@
         position: absolute;
         right: 44px;
         bottom: 22px;
+        z-index: 3;
     }
     
     .links a, a:active, a:visited {
