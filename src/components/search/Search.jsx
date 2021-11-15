@@ -109,7 +109,7 @@ export default function Search() {
             </div>
             <div className="links">
                 <a href="https://rickandmortyapi.com/">API</a>
-                <a href="https://github.com/chiarawilden/rick-and-morty-search">GitHub</a>
+                <a href="https://github.com/chiarawilden/rick-and-morty">GitHub</a>
             </div>
         </div>
     )
