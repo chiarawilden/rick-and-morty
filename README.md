@@ -1,6 +1,6 @@
 # Rick and Morty Search Filter 🤖
 
-I knew this API would come in handy! I took this project as an opportunity to practice making API requests using Axios. Working with this API was a lof fun, which ultimately motivated me to keep working.
+I knew this API would come in handy! I took this project as an opportunity to practice making API requests using Axios. Working with this API was a lot of fun, which ultimately motivated me to keep working.
 
 I also learned how to create glass morphism effects on desktop and mobile, which had been on my to do list for a while. Rick and Morty plus glass morphism, who would have thought!
 
