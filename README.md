@@ -44,4 +44,4 @@ It would also be nice if search results linked to a page for each individual's c
 
 # Live Demo
 
-[View the demo here.](https://portfolio.chiarawilden.com/rick-and-morty/)
+[View the demo here.](https://dev.chiarawilden.com/rick-and-morty/)
